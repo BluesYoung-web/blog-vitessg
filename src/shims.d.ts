@@ -14,3 +14,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module 'aplayer' {
+  import type { defineCustomElement } from 'vue'
+  const component: defineCustomElement<{}, {}, any>
+  export default component
+}
