@@ -1,3 +1,9 @@
+/*
+ * @Author: zhangyang
+ * @Date: 2022-01-10 16:16:14
+ * @LastEditTime: 2022-01-17 09:33:29
+ * @Description: 
+ */
 import { defineConfig } from 'windicss/helpers'
 import colors from 'windicss/colors'
 import typography from 'windicss/plugin/typography'
@@ -24,7 +30,7 @@ export default defineConfig({
               'textDecoration': 'underline',
               '&:hover': {
                 opacity: 1,
-                color: colors.teal[600],
+                color: colors.sky[600],
               },
             },
             b: { color: 'inherit' },

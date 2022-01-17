@@ -5,6 +5,12 @@ button:
   home: Home
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
+nav:
+  title: BluesYoung's Blog
+  doc: Articles
+  love: My Open Source Projects
+  gitee: Gitee
+  github: Github
 intro:
   desc: Opinionated Vite Starter Template
   dynamic-route: Demo of dynamic route

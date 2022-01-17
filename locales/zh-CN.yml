@@ -5,6 +5,12 @@ button:
   home: 首页
   toggle_dark: 切换深色模式
   toggle_langs: 切换语言
+nav:
+  title: 小黑博客
+  doc: 文章
+  love: 我的开源项目
+  gitee: Gitee
+  github: Github
 intro:
   desc: 固执己见的 Vite 项目模板
   dynamic-route: 动态路由演示

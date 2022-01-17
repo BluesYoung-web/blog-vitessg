@@ -1,13 +1,68 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-16 14:16:48
- * @LastEditTime: 2022-01-16 16:30:37
+ * @LastEditTime: 2022-01-17 15:54:04
  * @Description: 
 -->
+<script lang="ts" setup>
+const { t } = useI18n();
+
+const scorll = () => {
+  const { offsetTop } = document.querySelector('#main-content') as HTMLElement;
+  console.log(offsetTop)
+  window.scrollTo({
+    top: offsetTop,
+    behavior: 'smooth'
+  });
+};
+</script>
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
+  <div>
+    <header class="header">
+      <Header />
+      <div class="h-full flex flex-col justify-center items-center">
+        <p class="text-2xl font-bold mb-1 lg:text-4xl">{{ t('nav.title') }}</p>
+        <OneSay class="text-xl lg:text-2xl text-center" />
+      </div>
+      <Music />
+      <div class="down">
+        <ri-arrow-down-s-line class="icon" @click="scorll" />
+      </div>
+    </header>
     <router-view />
-    <OneSay />
-    <Music />
-  </main>
+  </div>
 </template>
+
+<style lang="scss" scoped>
+.header {
+  background-image: url('https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png'), linear-gradient(60deg, rgba(255, 165, 150, 0.5) -6%, rgba(0, 228, 255, 0.35)), url('https://blog-src-rose.vercel.app/img/goldenmeili.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #49b1f5;
+  background-position: center;
+  @apply w-full h-100vh transition-all duration-500 text-gray-50 dark:text-purple-500;
+  .down {
+    @apply absolute bottom-2 w-full text-center z-1 font-bold text-4xl;
+    
+    @keyframes icon-jump {
+      0% {
+        opacity: 0.4;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 0.4;
+        transform: scale(0.8)
+      }
+    }
+    .icon {
+      animation: icon-jump 2s infinite ease-in-out;
+      @apply hover:cursor-pointer;
+    }
+  }
+}
+</style>

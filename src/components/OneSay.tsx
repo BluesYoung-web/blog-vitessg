@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-16 14:49:24
- * @LastEditTime: 2022-01-16 15:30:11
+ * @LastEditTime: 2022-01-17 11:36:46
  * @Description: 一言
  */
 const refresh_api = `https://v1.hitokoto.cn/`;
@@ -40,7 +40,7 @@ export default defineComponent({
     };
     const goDetail = () => {
       const a = document.createElement('a');
-      a.setAttribute('open', '_blank');
+      a.setAttribute('target', '_blank');
       a.setAttribute('href', `${detail_api}${sayObj.value?.uuid}`);
       a.click();
     };
@@ -71,6 +71,7 @@ export default defineComponent({
       >
         <p>{ sayObj.value?.hitokoto ?? '' }</p>
         <p>
+          <span>出自：</span>
           {
             `
               ${sayObj.value?.from ?? ''}
