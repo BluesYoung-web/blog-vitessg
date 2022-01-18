@@ -5,6 +5,7 @@ button:
   home: 首页
   toggle_dark: 切换深色模式
   toggle_langs: 切换语言
+  back_to_top: 回到顶部
 nav:
   title: 小黑博客
   doc: 文章

@@ -5,6 +5,7 @@ button:
   home: Home
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
+  back_to_top: Back To Top
 nav:
   title: BluesYoung's Blog
   doc: Articles

@@ -1,9 +1,30 @@
+<!--
+ * @Author: zhangyang
+ * @Date: 2022-01-10 16:16:14
+ * @LastEditTime: 2022-01-18 11:30:11
+ * @Description: 
+-->
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-    <router-view />
-    <Footer />
-    <div class="mt-5 mx-auto text-center opacity-25 text-sm">
-      [Default Layout]
+  <div class="main">
+    <Header class="dark:text-gray-100" />
+    <div class="container">
+      <article class="artical">
+        <router-view />
+      </article>
     </div>
-  </main>
+    
+  </div>
 </template>
+
+<style lang="scss" scoped>
+.main {
+  @apply w-full flex justify-center;
+}
+.container {
+  // @apply bg-red-500;
+  @apply w-49/50 lg:w-2/5 relative top-30 py-10 px-5 border rounded;
+}
+.artical {
+  @apply text-gray-700 dark:text-gray-100;
+}
+</style>

@@ -4,25 +4,30 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    CarbonCampsite: typeof import('~icons/carbon/campsite')['default']
-    CarbonDicomOverlay: typeof import('~icons/carbon/dicom-overlay')['default']
+    BiArrowUpCircle: typeof import('~icons/bi/arrow-up-circle')['default']
     CarbonLanguage: typeof import('~icons/carbon/language')['default']
-    CarbonLogoGithub: typeof import('~icons/carbon/logo-github')['default']
     CarbonMoon: typeof import('~icons/carbon/moon')['default']
     CarbonSun: typeof import('~icons/carbon/sun')['default']
-    CarbonWarning: typeof import('~icons/carbon/warning')['default']
     CiGithub: typeof import('~icons/ci/github')['default']
     Counter: typeof import('./components/Counter.vue')['default']
+    DocList: typeof import('./components/DocList.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     IcRoundMenuBook: typeof import('~icons/ic/round-menu-book')['default']
-    LogosGithubIcon: typeof import('~icons/logos/github-icon')['default']
     Music: typeof import('./components/Music.tsx')['default']
+    NCard: typeof import('naive-ui')['NCard']
+    NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NDataTable: typeof import('naive-ui')['NDataTable']
+    NImage: typeof import('naive-ui')['NImage']
     NotoHeartSuit: typeof import('~icons/noto/heart-suit')['default']
+    NTime: typeof import('naive-ui')['NTime']
+    NTimeline: typeof import('naive-ui')['NTimeline']
+    NTimelineItem: typeof import('naive-ui')['NTimelineItem']
     OneSay: typeof import('./components/OneSay.tsx')['default']
     README: typeof import('./components/README.md')['default']
     RiArrowDownSLine: typeof import('~icons/ri/arrow-down-s-line')['default']
     SimpleIconsGitee: typeof import('~icons/simple-icons/gitee')['default']
+    Step: typeof import('./components/Step.vue')['default']
   }
 }
 

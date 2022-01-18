@@ -1,15 +1,16 @@
+<!--
+ * @Author: zhangyang
+ * @Date: 2022-01-10 16:16:14
+ * @LastEditTime: 2022-01-18 11:48:16
+ * @Description: 
+-->
 <script setup lang="ts">
-// https://github.com/vueuse/head
-// you can use this to manipulate the document head in any components,
-// they will be rendered correctly in the html results with vite-ssg
-useHead({
-  title: 'Vitesse',
-  meta: [
-    { name: 'description', content: 'Opinionated Vite Starter Template' },
-  ],
-})
+import { isDark } from '~/composables';
+import { darkTheme } from 'naive-ui';
 </script>
 
 <template>
-  <router-view />
+  <NConfigProvider :theme="isDark ? darkTheme : undefined">
+    <router-view />
+  </NConfigProvider>
 </template>

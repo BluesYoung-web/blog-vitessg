@@ -1,23 +1,22 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-16 14:16:48
- * @LastEditTime: 2022-01-17 15:54:04
+ * @LastEditTime: 2022-01-18 14:58:35
  * @Description: 
 -->
 <script lang="ts" setup>
 const { t } = useI18n();
-
-const scorll = () => {
+const scorll = (top?: number) => {
   const { offsetTop } = document.querySelector('#main-content') as HTMLElement;
-  console.log(offsetTop)
   window.scrollTo({
-    top: offsetTop,
+    top: top ?? offsetTop,
     behavior: 'smooth'
   });
 };
+const { y } = useScroll(window);
 </script>
 <template>
-  <div>
+  <div class="main">
     <header class="header">
       <Header />
       <div class="h-full flex flex-col justify-center items-center">
@@ -26,22 +25,32 @@ const scorll = () => {
       </div>
       <Music />
       <div class="down">
-        <ri-arrow-down-s-line class="icon" @click="scorll" />
+        <ri-arrow-down-s-line class="icon" @click="() => scorll()" />
       </div>
     </header>
     <router-view />
+    <Footer />
+    <div v-show="y > 720" class="top-btn" :title="t('button.back_to_top')" @click="() => scorll(0)">
+      <bi-arrow-up-circle />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.main {
+  @apply text-gray-50 dark:text-purple-500;
+  .top-btn {
+    @apply fixed right-2 bottom-2 lg:right-10 lg:bottom-10 text-2xl text-gray-400 dark:text-purple-500 hover:cursor-pointer;
+  }
+}
 .header {
-  background-image: url('https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png'), linear-gradient(60deg, rgba(255, 165, 150, 0.5) -6%, rgba(0, 228, 255, 0.35)), url('https://blog-src-rose.vercel.app/img/goldenmeili.png');
+  background-image: url('/img/poster-filter.png'), linear-gradient(60deg, rgba(255, 165, 150, 0.5) -6%, rgba(0, 228, 255, 0.35)), url('/img/goldenmeili.png');
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #49b1f5;
   background-position: center;
-  @apply w-full h-100vh transition-all duration-500 text-gray-50 dark:text-purple-500;
+  @apply w-full h-100vh transition-all duration-500;
   .down {
     @apply absolute bottom-2 w-full text-center z-1 font-bold text-4xl;
     

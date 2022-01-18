@@ -7,6 +7,7 @@ import Layouts from 'vite-plugin-vue-layouts'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import Markdown from 'vite-plugin-md'
 import WindiCSS from 'vite-plugin-windicss'
@@ -31,7 +32,7 @@ export default defineConfig({
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
-      extensions: ['vue', 'md'],
+      extensions: ['vue', 'md', 'tsx'],
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
@@ -66,6 +67,7 @@ export default defineConfig({
           componentPrefix: '',
           // enabledCollections: ['carbon']
         }),
+        NaiveUiResolver()
       ],
 
       dts: 'src/components.d.ts',
