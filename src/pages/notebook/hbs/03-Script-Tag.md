@@ -1,8 +1,6 @@
 ---
 title: 03-script元素
 date: 2020-12-28 15:57:52
-top_img: /img/hbs.png
-cover: /img/hbs.png
 image: /img/hbs.png
 description: <script> 元素的由来
 ---
@@ -19,9 +17,9 @@ description: <script> 元素的由来
 
 <script lang="ts" setup>
 const tableHead = [
-  { title: 'name', key: 'name', width: 100 },
-  { title: '是否必填', key: 'need', width: 100 },
-  { title: '含义', key: 'des' }
+  { label: 'name', prop: 'name', width: 100 },
+  { label: '是否必填', prop: 'need', width: 100 },
+  { label: '含义', prop: 'des' }
 ];
 const tableData = [
   {
@@ -62,12 +60,20 @@ const tableData = [
 ];
 </script>
 
-<NDataTable
-  :columns="tableHead"
-  :data="tableData"
-  :bordered="false"
-  :striped="true"
-/>
+<NTable :bordered="false" :single-line="false" striped>
+  <thead>
+    <tr>
+      <th v-for="(item, index) in tableHead" :key="index + 'head'" :width="item.width ?? ''">
+        {{ item.label }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="(item, index) in tableData" :key="index + 'dasdasd'">
+      <td v-for="(it, idx) in tableHead" :key="idx + 'eret'" v-html="item[String(it.prop)]"></td>
+    </tr>
+  </tbody>
+</NTable>
 
 
 ## 使用

@@ -3,8 +3,6 @@ title: 01-历史回顾
 date: 2020-12-28 14:41:53
 image: /img/hbs.png
 description: JavaScript 发展史
-top_img: /img/hbs.png
-cover: /img/hbs.png
 ---
 
 <Step

@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-16 14:16:48
- * @LastEditTime: 2022-01-19 15:33:01
+ * @LastEditTime: 2022-01-19 16:24:04
  * @Description: 
 -->
 <script lang="ts" setup>
@@ -11,7 +11,7 @@ import { isClient } from '@vueuse/core';
 const { t } = useI18n();
 const scorll = (top?: number) => {
   const { offsetTop } = document.querySelector('#main-content') as HTMLElement;
-  isClient && window.scrollTo({
+  window.scrollTo({
     top: top ?? offsetTop,
     behavior: 'smooth'
   });

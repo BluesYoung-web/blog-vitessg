@@ -1,8 +1,6 @@
 ---
 title: 02-实现
 date: 2020-12-28 15:36:00
-top_img: /img/hbs.png
-cover: /img/hbs.png
 image: /img/hbs.png
 description: JavaScript 的组成
 ---
