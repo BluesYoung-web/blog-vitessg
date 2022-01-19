@@ -13,9 +13,11 @@ import Markdown from 'vite-plugin-md'
 import WindiCSS from 'vite-plugin-windicss'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
-import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
+// 自动处理 optimizeDeps 缓存
+import OptimizationPersist from 'vite-plugin-optimize-persist'
+import PkgConfig from 'vite-plugin-package-config'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -65,7 +67,6 @@ export default defineConfig({
         // https://github.com/antfu/unplugin-icons
         IconsResolver({
           componentPrefix: '',
-          // enabledCollections: ['carbon']
         }),
         NaiveUiResolver()
       ],
@@ -106,8 +107,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
+        name: 'BluesYoung\'s Blog',
+        short_name: 'Young\'s Blog',
         theme_color: '#ffffff',
         icons: [
           {
@@ -137,11 +138,8 @@ export default defineConfig({
       include: [path.resolve(__dirname, 'locales/**')],
     }),
 
-    // https://github.com/antfu/vite-plugin-inspect
-    Inspect({
-      // change this to enable inspect for debugging
-      enabled: false,
-    }),
+    PkgConfig(),
+    OptimizationPersist(),
   ],
 
   server: {
@@ -154,18 +152,7 @@ export default defineConfig({
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
-  },
-
-  optimizeDeps: {
-    include: [
-      'vue',
-      'vue-router',
-      '@vueuse/core',
-      '@vueuse/head',
-    ],
-    exclude: [
-      'vue-demi',
-    ],
+    format: 'cjs'
   },
 
   // https://github.com/vitest-dev/vitest

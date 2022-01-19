@@ -1,19 +1,22 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-16 14:16:48
- * @LastEditTime: 2022-01-18 14:58:35
+ * @LastEditTime: 2022-01-19 15:33:01
  * @Description: 
 -->
 <script lang="ts" setup>
+// 只有在浏览器端才存在 window
+import { isClient } from '@vueuse/core';
+
 const { t } = useI18n();
 const scorll = (top?: number) => {
   const { offsetTop } = document.querySelector('#main-content') as HTMLElement;
-  window.scrollTo({
+  isClient && window.scrollTo({
     top: top ?? offsetTop,
     behavior: 'smooth'
   });
 };
-const { y } = useScroll(window);
+const { y } = useScroll(isClient ? window : null);
 </script>
 <template>
   <div class="main">

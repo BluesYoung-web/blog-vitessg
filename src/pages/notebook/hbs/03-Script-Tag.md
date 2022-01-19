@@ -118,11 +118,12 @@ const tableData = [
 
 自 1995 年 Netscape 2 发布以来，所有浏览器都将 JavaScript 作为默认的编程语言。type 属性使用一个 MIME 类型字符串来标识`<script>`>的内容，但 `MIME`类型并没有跨浏览器标准化。即使浏览器默认使用 `JavaScript`，在某些情况下某个无效或无法识别的 `MIME`类型也可能导致浏览器跳过（不执行）相关代码。因此，除非你使用 `XHTML` 或 `<script>` 标签要求或包含非 `JavaScript` 代码，**最佳做法是不指定 `type`属性**
 
-```
+```html
+<!-- Netscape 与 Mosaic 针对不支持 script 元素的浏览器的 hack 写法 -->
 <script><!--
-    function h() {
-        console.log('hello, world');
-    }
+function h() {
+    console.log('hello, world');
+}
 //--></sccript>
 ```
 

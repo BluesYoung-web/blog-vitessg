@@ -8,6 +8,7 @@ declare module 'vue' {
     CarbonLanguage: typeof import('~icons/carbon/language')['default']
     CarbonMoon: typeof import('~icons/carbon/moon')['default']
     CarbonSun: typeof import('~icons/carbon/sun')['default']
+    CarbonWarning: typeof import('~icons/carbon/warning')['default']
     CiGithub: typeof import('~icons/ci/github')['default']
     Counter: typeof import('./components/Counter.vue')['default']
     DocList: typeof import('./components/DocList.vue')['default']

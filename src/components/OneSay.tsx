@@ -1,9 +1,10 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-16 14:49:24
- * @LastEditTime: 2022-01-17 11:36:46
+ * @LastEditTime: 2022-01-19 15:41:53
  * @Description: 一言
  */
+import { isClient } from '@vueuse/core';
 const refresh_api = `https://v1.hitokoto.cn/`;
 const detail_api = `https://hitokoto.cn?uuid=`;
 
@@ -44,7 +45,6 @@ export default defineComponent({
       a.setAttribute('href', `${detail_api}${sayObj.value?.uuid}`);
       a.click();
     };
-    refresh();
     const eventDiapatcher = (e: MouseEvent) => {
       switch (e.button) {
         case 0:
@@ -61,6 +61,8 @@ export default defineComponent({
           break;
       }
     };
+    // 只有浏览器端才有 fetch api
+    isClient && refresh();
     return () => (
       <div
         class="hover:cursor-pointer"

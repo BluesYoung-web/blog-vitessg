@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-18 16:27:21
+ * @LastEditTime: 2022-01-19 15:01:25
  * @Description: 
  */
 import { cloneDeep } from 'lodash';
@@ -41,4 +41,4 @@ export const useDocsStore = defineStore('docs', () => {
 });
 
 // 热更新
-import.meta.hot?.accept(acceptHMRUpdate(useDocsStore, import.meta.hot));
+import.meta.hot && import.meta.hot.accept(acceptHMRUpdate(useDocsStore, import.meta.hot));
