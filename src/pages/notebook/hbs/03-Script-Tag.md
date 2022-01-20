@@ -128,7 +128,7 @@ const tableData = [
 <!-- Netscape 与 Mosaic 针对不支持 script 元素的浏览器的 hack 写法 -->
 <script><!--
 function h() {
-    console.log('hello, world');
+  console.log('hello, world');
 }
 //--></sccript>
 ```
