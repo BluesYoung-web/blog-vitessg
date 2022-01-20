@@ -59,7 +59,8 @@
     "vite-plugin-windicss": "^1.6.3",
     "vite-ssg": "0.17.6",
     "vitest": "^0.1.21",
-    "vue-tsc": "^0.30.5"
+    "vue-tsc": "^0.30.5",
+    "windicss": "^3.4.3"
   },
   "vite": {
     "optimizeDeps": {

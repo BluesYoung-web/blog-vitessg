@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-19 15:01:25
+ * @LastEditTime: 2022-01-20 16:28:09
  * @Description: 
  */
 import { cloneDeep } from 'lodash';
@@ -12,23 +12,35 @@ export const useDocsStore = defineStore('docs', () => {
    * 所有的文章列表
    */
   const allDocs = ref<DocItem[]>([]);
+  /**
+   * 所有目录
+   */
+  const allDirs = ref<Set<string>>(new Set());
 
   const totalDocs = new Array<DocItem>();
+  const totalDirs = new Set<string>();
   const docs = import.meta.globEager('../pages/**/*.md');
   for (const [key, value] of Object.entries(docs)) {
     console.log(key);
     console.log(value);
+    // 文章收集
     totalDocs.push({
       ...value,
       path: key.slice(8, -3),
       // 修复时间 bug
       date: value.date.slice(0, -1)
     } as DocItem);
+    // 目录收集
+    let dir = key.slice(9);
+    dir = dir.slice(0, dir.lastIndexOf('/'));
+    totalDirs.add(dir);
   }
   // 按时间倒序
   totalDocs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   allDocs.value = cloneDeep(totalDocs);
+  allDirs.value = cloneDeep(totalDirs);
+  console.log(totalDirs)
   /**
    * 首页显示的文章，默认展示最新的 10 条
    */
@@ -36,7 +48,8 @@ export const useDocsStore = defineStore('docs', () => {
 
   return {
     allDocs,
-    homeDocs
+    homeDocs,
+    allDirs
   };
 });
 

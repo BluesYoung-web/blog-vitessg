@@ -1,3 +1,4 @@
+# 按钮相关
 button:
   about: About
   back: Back
@@ -6,16 +7,39 @@ button:
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
   back_to_top: Back To Top
+
+# 导航相关
 nav:
   title: BluesYoung's Blog
   doc: Articles
   love: My Open Source Projects
   gitee: Gitee
   github: Github
+  gitee_addr: https://gitee.com/BluesYoung-web
+  github_addr: https://github.com/BluesYoung-web
+  mail: Mail to me
+  mail_addr: 'mailto:bluesyoung_web&#64;163.com'
+
+# 个人卡片相关
 intro:
-  desc: Opinionated Vite Starter Template
-  dynamic-route: Demo of dynamic route
-  hi: Hi, {name}!
-  aka: Also known as
-  whats-your-name: What's your name?
+  anthor: BluesYoung-web
+  say: I'am addicted to the programming and can't help myself
+  nums: Current Articles
+  classess: Classess
+
 not-found: Not found
+
+# 音乐播放器相关的配置
+music:
+  api: https://api.i-meto.com/meting/api
+  # 目前为播放清单的 id，可以为 歌曲id、清单id、专辑id、搜索关键词
+  id: '3231649721'
+  # 歌曲服务器 netease, tencent, kugou, xiami, baidu
+  server: netease
+  # id 类型 song, playlist, album, search, artist
+  type: playlist
+
+# 一言相关的配置
+one_say:
+  refresh: https://v1.hitokoto.cn/
+  detail: https://hitokoto.cn?uuid=

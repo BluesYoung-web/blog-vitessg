@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-17 11:24:16
- * @LastEditTime: 2022-01-17 15:08:06
+ * @LastEditTime: 2022-01-20 17:06:23
  * @Description: 头部导航栏组件
 -->
 <script lang="ts" setup>
@@ -28,11 +28,11 @@ const toggleLocales = () => {
         <noto-heart-suit class="text-sm" />
         <span>拥抱开源</span>
       </a>
-      <a class="item" target="_blank" :title="t('nav.gitee')" href="https://gitee.com/BluesYoung-web">
+      <a class="item" target="_blank" :title="t('nav.gitee')" :href="t('nav.gitee_addr')">
         <simple-icons-gitee class="text-sm" />
         <span>Gitee</span>
       </a>
-      <a class="item" target="_blank" :title="t('nav.github')" href="https://github.com/BluesYoung-web">
+      <a class="item" target="_blank" :title="t('nav.github')" :href="t('nav.github_addr')">
         <ci-github />
         <span>Github</span>
       </a>
@@ -58,7 +58,7 @@ const toggleLocales = () => {
     .item {
       @apply flex justify-center items-center ml-3 lg:ml-5 hover:cursor-pointer;
       span {
-        @apply lg:inline-block hidden;
+        @apply <lg:hidden <xl:transform <xl:text-xs inline-block;
       }
     }
   }

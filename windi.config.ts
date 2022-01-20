@@ -1,12 +1,12 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-17 09:33:29
+ * @LastEditTime: 2022-01-20 16:58:33
  * @Description: 
  */
-import { defineConfig } from 'windicss/helpers'
-import colors from 'windicss/colors'
-import typography from 'windicss/plugin/typography'
+import { defineConfig } from 'windicss/helpers';
+import colors from 'windicss/colors';
+import typography from 'windicss/plugin/typography';
 
 export default defineConfig({
   darkMode: 'class',
@@ -14,7 +14,7 @@ export default defineConfig({
   attributify: true,
 
   plugins: [
-    typography(),
+    typography()
   ],
   theme: {
     extend: {
@@ -46,4 +46,4 @@ export default defineConfig({
       },
     },
   },
-})
+});

@@ -1,12 +1,10 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-16 14:49:24
- * @LastEditTime: 2022-01-19 15:41:53
+ * @LastEditTime: 2022-01-20 19:08:06
  * @Description: 一言
  */
 import { isClient } from '@vueuse/core';
-const refresh_api = `https://v1.hitokoto.cn/`;
-const detail_api = `https://hitokoto.cn?uuid=`;
 
 type OneSay = {
   commit_from: string;
@@ -25,9 +23,10 @@ type OneSay = {
 
 export default defineComponent({
   setup() {
+    const { t } = useI18n();
     const sayObj = ref<OneSay>();
     const refresh = async () => {
-      const res = await fetch(refresh_api);
+      const res = await fetch(t('one_say.refresh'));
       sayObj.value = await res.json();
     };
     const { copy, isSupported } = useClipboard();
@@ -42,7 +41,7 @@ export default defineComponent({
     const goDetail = () => {
       const a = document.createElement('a');
       a.setAttribute('target', '_blank');
-      a.setAttribute('href', `${detail_api}${sayObj.value?.uuid}`);
+      a.setAttribute('href', `${t('one_say.detail')}${sayObj.value?.uuid}`);
       a.click();
     };
     const eventDiapatcher = (e: MouseEvent) => {

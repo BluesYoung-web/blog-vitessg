@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-18 15:42:32
+ * @LastEditTime: 2022-01-20 15:46:31
  * @Description: 
 -->
 <route lang="yaml">
@@ -17,13 +17,16 @@ const { homeDocs } = useDocsStore();
 <template>
   <main id="main-content">
     <DocList :data="homeDocs" />
-    <div class="side"></div>
+    <MyCard class="my-card" />
   </main>
 </template>
 
 <style lang="scss" scoped>
 #main-content {
-  @apply w-full min-h-100vh flex justify-center;
+  @apply w-full min-h-100vh flex justify-center relative;
+  .my-card {
+    @apply absolute top-10 <lg:hidden lg:right-2 xl:right-20 2xl:right-60;
+  }
 }
 </style>
 
