@@ -1,30 +1,75 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-18 17:54:35
+ * @LastEditTime: 2022-01-21 14:20:24
  * @Description: 
 -->
+<script lang="ts" setup>
+import { isClient } from '@vueuse/core';
+import PlumBg from '~/components/PlumBg.vue';
+
+const router = useRouter();
+const content = ref<HTMLDivElement>();
+
+onMounted(() => {
+  const navigate = () => {
+    if (location.hash) {
+      const target = document.querySelector(decodeURIComponent(location.hash));
+      target?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  const handleAnchors = (event: MouseEvent & { target: HTMLElement }) => {
+    const link = event.target.closest('a');
+
+    if (link?.className === 'header-anchor') {
+      const url = new URL(link.href);
+      event.preventDefault();
+      const { pathname, hash } = url;
+      if (hash && (!pathname || pathname === location.pathname)) {
+        window.history.replaceState({}, '', hash);
+        navigate();
+      }
+      else {
+        router.push({ path: pathname, hash });
+      }
+    }
+  }
+
+  useEventListener(window, 'hashchange', navigate);
+  useEventListener(content.value!, 'click', handleAnchors, { passive: false });
+
+  if (!isClient) {
+    return;
+  }
+
+  navigate();
+  setTimeout(navigate, 500);
+});
+</script>
 <template>
   <div class="main">
     <Header class="dark:text-gray-100" />
     <div class="container">
-      <article class="artical">
+      <article ref="content" class="artical">
         <router-view />
       </article>
     </div>
-    
+    <Footer />
+    <ScrollTop :show="120" />
+    <PlumBg />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .main {
-  @apply w-full flex justify-center;
-}
-.container {
-  // @apply bg-red-500;
-  @apply w-49/50 lg:w-2/5 relative top-30 py-10 px-5 border rounded;
-}
-.artical {
-  @apply text-gray-700 dark:text-gray-100;
+  @apply w-full ;
+
+  .container {
+    @apply w-49/50 lg:w-2/5 pt-20 pb-8 m-auto;
+  }
+  .artical {
+    @apply text-gray-700 dark:text-gray-100 min-h-78vh;
+  }
 }
 </style>

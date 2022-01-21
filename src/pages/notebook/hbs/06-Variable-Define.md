@@ -5,6 +5,8 @@ date: 2020-12-28 16:26:48
 description: JavaScript 变量声明
 ---
 
+[[toc]]
+
 ## `var`
 
 最初定义变量的方法

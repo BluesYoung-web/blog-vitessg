@@ -24,8 +24,11 @@ nav:
 intro:
   anthor: BluesYoung-web
   say: I'am addicted to the programming and can't help myself
-  nums: Current Articles
+  nums: Articles
   classess: Classess
+  repos: Repositories
+  # 开源仓库
+  repos_api: https://gitee.com/api/v5/users/BluesYoung-web/repos?type=all&sort=full_name&page=1&per_page=100
 
 not-found: Not found
 

@@ -70,3 +70,41 @@ html.dark {
 ::-webkit-scrollbar-corner {
   background-color: transparent
 }
+
+
+// 自动目录
+@media (max-width: 1200px) {
+  .table-of-contents {
+    display: none;
+  }
+}
+
+.table-of-contents {
+  position: fixed;
+  top: 80px;
+  padding-top: 70px;
+  font-size: 0.8em;
+  right: 10rem;
+  width: 200px;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  opacity: 0.3;
+  -webkit-transition: all .4s ease-out;
+  -o-transition: all .4s ease-out;
+  transition: all .4s ease-out;
+}
+
+.table-of-contents:hover {
+  opacity: 0.8;
+}
+
+.table-of-contents ul > li::before {
+  display: none;
+}
+
+.table-of-contents ul > li {
+  padding-left: 0.8rem;
+}

@@ -5,6 +5,8 @@ description: JavaScript 函数
 date: 2020-12-28 17:21:20
 ---
 
+[[toc]]
+
 ## 基础
 
 函数对于任何语言来说都是核心组件

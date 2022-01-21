@@ -1,19 +1,25 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-20 14:33:40
- * @LastEditTime: 2022-01-20 17:42:45
+ * @LastEditTime: 2022-01-21 15:26:57
  * @Description: 个人卡片
 -->
 <script lang="ts" setup>
+import { isClient } from '@vueuse/core';
 import { useDocsStore } from '~/stores/docs';
 const { t, locale } = useI18n();
 const { allDocs, allDirs } = useDocsStore();
+const repos = ref(0);
 const mail_addr = computed(() => t('nav.mail_addr').replace('&#64;', '@'));
 const sendMail = () => {
   const a = document.createElement('a');
   a.href = mail_addr.value;
   a.click();
 };
+isClient && (async () => {
+  const res = await fetch(t('intro.repos_api'));
+  repos.value = +(res.headers.get('total_count') ?? 0);
+})();
 </script>
 
 <template>
@@ -26,7 +32,8 @@ const sendMail = () => {
         <!-- <p class="nums">{{ `${t('intro.nums')} ：${allDocs.length}` }}</p> -->
         <div class="data">
           <NStatistic :label="t('intro.nums')" :value="allDocs.length" />
-          <NStatistic :label="t('intro.classess')" :value="allDirs.size" />
+          <NStatistic :label="t('intro.classess')" :value="allDirs.length" />
+          <NStatistic :label="t('intro.repos')" :value="repos" />
         </div>
         <button class="btn" :title="mail_addr" @click="sendMail">
           <mdi-light-email class="mr-1" />
@@ -60,7 +67,7 @@ const sendMail = () => {
     }
 
     .btn {
-      @apply flex justify-center items-center;
+      @apply flex justify-center items-center w-7/8;
     }
   }
 }

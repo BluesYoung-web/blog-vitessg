@@ -5,6 +5,8 @@ description: JavaScript 语句
 date: 2020-12-28 17:18:34
 ---
 
+[[toc]]
+
 ## `if`
 
 `if (condition) statement1 else statement2 `

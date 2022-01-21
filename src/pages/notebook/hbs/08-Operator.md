@@ -5,6 +5,8 @@ date: 2020-12-28 17:02:27
 description: JavaScript 操作符
 ---
 
+[[toc]]
+
 ## 一元操作符
 
 只操作一个值的操作符

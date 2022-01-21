@@ -5,6 +5,8 @@ description: JavaScript 数据类型
 date: 2020-12-28 16:28:37
 ---
 
+[[toc]]
+
 ## 简单数据类型
 
 `Undefined`

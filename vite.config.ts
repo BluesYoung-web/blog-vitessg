@@ -15,9 +15,16 @@ import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
+import anchor from 'markdown-it-anchor'
+// @ts-expect-error
+import TOC from 'markdown-it-table-of-contents'
 // 自动处理 optimizeDeps 缓存
 import OptimizationPersist from 'vite-plugin-optimize-persist'
 import PkgConfig from 'vite-plugin-package-config'
+import { slugify } from './scripts/slugify'
+import matter from 'gray-matter'
+import { resolve } from 'path'
+import fs from 'fs-extra'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -35,6 +42,17 @@ export default defineConfig({
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md', 'tsx'],
+      extendRoute(route) {
+        const path = resolve(__dirname, route.component.slice(1))
+
+        if (!path.includes('projects.md')) {
+          const md = fs.readFileSync(path, 'utf-8')
+          const { data } = matter(md)
+          route.meta = Object.assign(route.meta || {}, { frontmatter: data })
+        }
+
+        return route
+      }
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
@@ -89,15 +107,34 @@ export default defineConfig({
     Markdown({
       wrapperClasses: markdownWrapperClasses,
       headEnabled: true,
+      markdownItOptions: {
+        quotes: '""\'\'',
+      },
       markdownItSetup(md) {
         // https://prismjs.com/
         md.use(Prism)
+        
+        // 锚点
+        md.use(anchor, {
+          slugify,
+          permalink: anchor.permalink.linkInsideHeader({
+            symbol: '#',
+            renderAttrs: () => ({ 'aria-hidden': 'true' }),
+          }),
+        })
+
         md.use(LinkAttributes, {
           pattern: /^https?:\/\//,
           attrs: {
             target: '_blank',
             rel: 'noopener',
           },
+        })
+
+        // 目录
+        md.use(TOC, {
+          includeLevel: [1, 2, 3],
+          slugify,
         })
       },
     }),

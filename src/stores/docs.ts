@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-20 16:28:09
+ * @LastEditTime: 2022-01-21 15:26:46
  * @Description: 
  */
 import { cloneDeep } from 'lodash';
@@ -15,7 +15,7 @@ export const useDocsStore = defineStore('docs', () => {
   /**
    * 所有目录
    */
-  const allDirs = ref<Set<string>>(new Set());
+  const allDirs = ref<Array<string>>([]);
 
   const totalDocs = new Array<DocItem>();
   const totalDirs = new Set<string>();
@@ -39,8 +39,7 @@ export const useDocsStore = defineStore('docs', () => {
   totalDocs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   allDocs.value = cloneDeep(totalDocs);
-  allDirs.value = cloneDeep(totalDirs);
-  console.log(totalDirs)
+  allDirs.value = [...totalDirs];
   /**
    * 首页显示的文章，默认展示最新的 10 条
    */

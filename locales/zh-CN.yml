@@ -27,6 +27,9 @@ intro:
   say: 沉迷代码，无法自拔
   nums: 现有文章
   classess: 目录分类
+  repos: 开源项目
+  # 获取开源仓库数目的接口
+  repos_api: https://gitee.com/api/v5/users/BluesYoung-web/repos?type=all&sort=full_name&page=1&per_page=100
 not-found: 未找到页面
 
 # 音乐播放器相关的配置
