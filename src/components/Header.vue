@@ -1,21 +1,32 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-17 11:24:16
- * @LastEditTime: 2022-01-20 17:06:23
+ * @LastEditTime: 2022-01-21 10:47:31
  * @Description: 头部导航栏组件
 -->
 <script lang="ts" setup>
+import { isClient } from '@vueuse/core';
 import { isDark, toggleDark } from '~/composables'
 const { t, availableLocales, locale } = useI18n();
 const toggleLocales = () => {
-  // change to some real logic
   const locales = availableLocales;
   locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length];
 };
+
+const { directions, y } = useScroll(isClient ? window : null);
+const { top, bottom } = toRefs(directions);
+const isScrollUp = ref(false);
+watchEffect(() => {
+  if (top.value) {
+    isScrollUp.value = true;
+  } else if (bottom.value || y.value === 0) {
+    isScrollUp.value = false;
+  }
+});
 </script>
 
 <template>
-  <nav class="nav">
+  <nav class="nav" :class="[isScrollUp ? 'up' : '']">
     <div class="left">
       <a href="/">{{ t('nav.title') }}</a>
     </div>
@@ -48,8 +59,14 @@ const toggleLocales = () => {
 </template>
 
 <style lang="scss" scoped>
+.up {
+  position: fixed !important;
+  @apply bg-white opacity-90 top-0 @light:text-gray-900 dark:bg-gray-500 @dark:text-purple-500;
+}
 .nav {
-  @apply flex w-full font-bold text-sm lg:text-lg py-5 px-8 absolute z-1;
+  @apply flex w-full font-bold text-sm lg:text-lg py-5 px-8 absolute z-1 transition duration-100 ease-linear;
+
+
   .left {
     @apply w-3/5;
   }
