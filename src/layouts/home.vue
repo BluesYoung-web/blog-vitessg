@@ -1,22 +1,18 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-16 14:16:48
- * @LastEditTime: 2022-01-19 16:24:04
+ * @LastEditTime: 2022-01-21 11:09:24
  * @Description: 
 -->
 <script lang="ts" setup>
-// 只有在浏览器端才存在 window
-import { isClient } from '@vueuse/core';
-
 const { t } = useI18n();
-const scorll = (top?: number) => {
+const scorll = () => {
   const { offsetTop } = document.querySelector('#main-content') as HTMLElement;
   window.scrollTo({
-    top: top ?? offsetTop,
+    top: offsetTop || 0,
     behavior: 'smooth'
   });
 };
-const { y } = useScroll(isClient ? window : null);
 </script>
 <template>
   <div class="main">
@@ -33,18 +29,13 @@ const { y } = useScroll(isClient ? window : null);
     </header>
     <router-view />
     <Footer />
-    <div v-show="y > 720" class="top-btn" :title="t('button.back_to_top')" @click="() => scorll(0)">
-      <bi-arrow-up-circle />
-    </div>
+    <ScrollTop />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .main {
   @apply text-gray-50 dark:text-purple-500;
-  .top-btn {
-    @apply fixed right-2 bottom-2 lg:right-10 lg:bottom-10 text-2xl text-gray-400 dark:text-purple-500 hover:cursor-pointer;
-  }
 }
 .header {
   background-image: url('/img/poster-filter.png'), linear-gradient(60deg, rgba(255, 165, 150, 0.5) -6%, rgba(0, 228, 255, 0.35)), url('/img/goldenmeili.png');
