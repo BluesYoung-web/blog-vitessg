@@ -9,4 +9,5 @@
     "source.fixAll.eslint": true,
   },
   "editor.formatOnSave": false,
+  "i18n-ally.sourceLanguage": "zh-CN",
 }
