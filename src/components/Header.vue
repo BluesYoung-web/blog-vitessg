@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-17 11:24:16
- * @LastEditTime: 2022-01-21 10:47:31
+ * @LastEditTime: 2022-01-24 17:43:28
  * @Description: 头部导航栏组件
 -->
 <script lang="ts" setup>
@@ -31,21 +31,21 @@ watchEffect(() => {
       <a href="/">{{ t('nav.title') }}</a>
     </div>
     <div class="right">
-      <a class="item" href="/readme" :title="t('nav.doc')">
+      <a class="item" href="/blogs" :title="t('nav.doc')">
         <ic-round-menu-book />
-        <span>文章</span>
+        <span>{{ t('nav.doc') }}</span>
       </a>
-      <a class="item" href="/readme" :title="t('nav.love')">
+      <a class="item" href="/about" :title="t('nav.love')">
         <noto-heart-suit class="text-sm" />
-        <span>拥抱开源</span>
+        <span>{{ t('nav.love') }}</span>
       </a>
       <a class="item" target="_blank" :title="t('nav.gitee')" :href="t('nav.gitee_addr')">
         <simple-icons-gitee class="text-sm" />
-        <span>Gitee</span>
+        <span>{{ t('nav.gitee') }}</span>
       </a>
       <a class="item" target="_blank" :title="t('nav.github')" :href="t('nav.github_addr')">
         <ci-github />
-        <span>Github</span>
+        <span>{{ t('nav.github') }}</span>
       </a>
       <button class="item" :title="t('button.toggle_dark')" @click="toggleDark()">
         <carbon-moon v-if="isDark" />

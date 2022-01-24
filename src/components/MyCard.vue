@@ -1,14 +1,14 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-20 14:33:40
- * @LastEditTime: 2022-01-21 15:26:57
+ * @LastEditTime: 2022-01-24 17:13:57
  * @Description: 个人卡片
 -->
 <script lang="ts" setup>
 import { isClient } from '@vueuse/core';
 import { useDocsStore } from '~/stores/docs';
 const { t, locale } = useI18n();
-const { allDocs, allDirs } = useDocsStore();
+const { allDocs, docTree } = useDocsStore();
 const repos = ref(0);
 const mail_addr = computed(() => t('nav.mail_addr').replace('&#64;', '@'));
 const sendMail = () => {
@@ -29,10 +29,9 @@ isClient && (async () => {
         <NImage src="/img/lufei_siwangningshi.jpg" :width="120" class="img" />
         <p class="title">{{ t('intro.anthor') }}</p>
         <p class="intro" :class="[locale === 'en' ? 'indent' : '']">{{ t('intro.say') }}</p>
-        <!-- <p class="nums">{{ `${t('intro.nums')} ：${allDocs.length}` }}</p> -->
         <div class="data">
           <NStatistic :label="t('intro.nums')" :value="allDocs.length" />
-          <NStatistic :label="t('intro.classess')" :value="allDirs.length" />
+          <NStatistic :label="t('intro.classess')" :value="docTree.length" />
           <NStatistic :label="t('intro.repos')" :value="repos" />
         </div>
         <button class="btn" :title="mail_addr" @click="sendMail">
@@ -51,6 +50,7 @@ isClient && (async () => {
     @apply flex flex-col justify-center items-center;
 
     .img {
+      will-change: transform;
       @apply rounded-full transform hover:rotate-360 transition duration-1000;
     }
 
