@@ -1,15 +1,20 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-18 14:28:36
- * @LastEditTime: 2022-01-18 16:04:24
+ * @LastEditTime: 2022-01-25 09:48:06
  * @Description: 文章列表
 -->
 <script lang="ts" setup>
 import type { DocItem } from '~/types';
 
-defineProps<{
+interface Props {
   data: DocItem[];
-}>();
+  showImage?: boolean;
+};
+
+withDefaults(defineProps<Props>(), {
+  showImage: true
+});
 </script>
 
 <template>
@@ -20,8 +25,8 @@ defineProps<{
       class="item"
     >
       <NCard class="my-4 rounded" :title="item.title" hoverable @click="$router.push(item.path)">
-        <template #cover>
-          <NImage :src="item.image ?? '/img/default.jpg'" fallback-src="/img/default.jpg" />
+        <template v-if="showImage" #cover>
+          <NImage :src="item.image ?? '/img/default.jpg'" fallback-src="/img/default.jpg" object-fit="fill" />
         </template>
         {{ item.description }}
         <template #action>
