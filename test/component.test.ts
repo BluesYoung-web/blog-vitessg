@@ -1,21 +1,38 @@
-import { mount } from '@vue/test-utils'
-import Counter from '../src/components/Counter.vue'
+/*
+ * @Author: zhangyang
+ * @Date: 2022-01-10 16:16:14
+ * @LastEditTime: 2022-01-25 11:15:04
+ * @Description: 
+ */
+import { mount } from '@vue/test-utils';
+import { i18n } from '~/modules/i18n';
+import Footer from '../src/components/Footer.vue';
 
-describe('Counter.vue', () => {
+describe('Footer.vue', () => {
   it('should render', () => {
-    const wrapper = mount(Counter, { props: { initial: 10 } })
-    expect(wrapper.text()).toContain('10')
-    expect(wrapper.html()).toMatchSnapshot()
-  })
+    const wrapper = mount(Footer, {
+      global: {
+        plugins: [i18n]
+      }
+    });
+    expect(wrapper.text()).toContain('Powerd By Vitesse');
+  });
 
   it('should be interactive', async() => {
-    const wrapper = mount(Counter, { props: { initial: 0 } })
-    expect(wrapper.text()).toContain('0')
+    const wrapper = mount(Footer, {
+      global: {
+        plugins: [i18n]
+      }
+    });
+    expect(wrapper.findAll('a').length).toBe(2);
+    
+    const [gitee, refer] = wrapper.findAll('a');
+    const giteeAttr = gitee.attributes();
+    const referAttr = refer.attributes();
+    expect(giteeAttr.target).toBe('_blank');
+    expect(giteeAttr.href).toBe(wrapper.vm.t('nav.gitee_addr'));
 
-    expect(wrapper.find('.inc').exists()).toBe(true)
-
-    await wrapper.get('button').trigger('click')
-
-    expect(wrapper.text()).toContain('1')
-  })
-})
+    expect(referAttr.target).toBe('_blank');
+    expect(referAttr.href).toBe('https://github.com/antfu/vitesse');
+  });
+});

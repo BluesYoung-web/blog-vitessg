@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-10 16:38:46
+ * @LastEditTime: 2022-01-25 11:02:46
  * @Description: 
  */
 import { createI18n } from 'vue-i18n'
@@ -18,14 +18,12 @@ const messages = Object.fromEntries(
       const yaml = key.endsWith('.yaml')
       return [key.slice(14, yaml ? -5 : -4), value.default]
     }),
-)
+);
 
-export const install: UserModule = ({ app }) => {
-  const i18n = createI18n({
-    legacy: false,
-    locale: 'zh-CN',
-    messages,
-  })
+export const i18n = createI18n({
+  legacy: false,
+  locale: 'zh-CN',
+  messages,
+});
 
-  app.use(i18n)
-}
+export const install: UserModule = ({ app }) => app.use(i18n);

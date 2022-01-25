@@ -32,7 +32,6 @@ declare module 'vue' {
     NTree: typeof import('naive-ui')['NTree']
     OneSay: typeof import('./components/OneSay.tsx')['default']
     PlumBg: typeof import('./components/PlumBg.vue')['default']
-    README: typeof import('./components/README.md')['default']
     RiArrowDownSLine: typeof import('~icons/ri/arrow-down-s-line')['default']
     ScrollTop: typeof import('./components/ScrollTop.tsx')['default']
     SimpleIconsGitee: typeof import('~icons/simple-icons/gitee')['default']
