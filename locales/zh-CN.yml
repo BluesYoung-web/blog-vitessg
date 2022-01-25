@@ -1,9 +1,6 @@
 # 按钮相关
 button:
-  about: 关于
   back: 返回
-  go: 确定
-  home: 首页
   toggle_dark: 切换深色模式
   toggle_langs: 切换语言
   back_to_top: 回到顶部
