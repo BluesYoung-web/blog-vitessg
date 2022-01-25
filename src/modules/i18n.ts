@@ -1,11 +1,11 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-25 11:02:46
+ * @LastEditTime: 2022-01-25 12:09:47
  * @Description: 
  */
-import { createI18n } from 'vue-i18n'
-import type { UserModule } from '~/types'
+import { createI18n } from 'vue-i18n';
+import type { UserModule } from '~/types';
 
 // Import i18n resources
 // https://vitejs.dev/guide/features.html#glob-import
@@ -17,7 +17,7 @@ const messages = Object.fromEntries(
     .map(([key, value]) => {
       const yaml = key.endsWith('.yaml')
       return [key.slice(14, yaml ? -5 : -4), value.default]
-    }),
+    })
 );
 
 export const i18n = createI18n({
