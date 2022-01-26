@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-20 14:33:40
- * @LastEditTime: 2022-01-24 17:46:07
+ * @LastEditTime: 2022-01-26 11:25:42
  * @Description: 文章目录
 -->
 <script lang="ts" setup>
@@ -9,7 +9,7 @@ import { useDocsStore } from '~/stores/docs';
 import { DocIndexItem } from '~/types';
 const { t } = useI18n();
 const router = useRouter();
-const { docTree } = useDocsStore();
+const { docTree, allDocs } = useDocsStore();
 const pattern = ref('');
 
 const jump = (_: any, [v , ...__]: DocIndexItem[]) => {
@@ -23,10 +23,10 @@ const jump = (_: any, [v , ...__]: DocIndexItem[]) => {
   <div class="main">
     <NCard hoverable>
       <div class="container">
-        <p class="title">{{ t('intro.doc_toc') }}</p>
+        <p class="title">{{ `${t('intro.doc_toc')}(${allDocs.length})` }}</p>
         <div class="data">
           <n-space vertical :size="12" class="w-80">
-            <n-input v-model:value="pattern" placeholder="搜索" />
+            <n-input v-model:value="pattern" :placeholder="t('intro.search')" />
             <n-tree
               :pattern="pattern"
               :data="docTree"

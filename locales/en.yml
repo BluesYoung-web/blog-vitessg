@@ -1,47 +1,29 @@
-# 按钮相关
 button:
   back: Back
+  back_to_top: Back To Top
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
-  back_to_top: Back To Top
-
-# 导航相关
-nav:
-  title: BluesYoung's Blog
-  doc: Articles
-  love: About
-  gitee: Gitee
-  github: Github
-  gitee_addr: https://gitee.com/BluesYoung-web
-  github_addr: https://github.com/BluesYoung-web
-  mail: Mail to me
-  mail_addr: 'mailto:bluesyoung_web&#64;163.com'
-
-# 个人卡片相关
 intro:
   anthor: BluesYoung-web
-  say: I'am addicted to the programming and can't help myself
-  nums: Articles
-  classess: Classess
-  repos: Repositories
-  # 开源仓库
-  repos_api: https://gitee.com/api/v5/users/BluesYoung-web/repos?type=all&sort=full_name&page=1&per_page=100&access_token=36ca4852e583c1ed024aa1cfc1bc3c3f
-  # 文章目录
   doc_toc: Article List
-
-not-found: Not found
-
-# 音乐播放器相关的配置
+  say: I'am addicted to the programming and can't help myself
+  search: Search
 music:
   api: https://api.i-meto.com/meting/api
-  # 目前为播放清单的 id，可以为 歌曲id、清单id、专辑id、搜索关键词
   id: '3231649721'
-  # 歌曲服务器 netease, tencent, kugou, xiami, baidu
   server: netease
-  # id 类型 song, playlist, album, search, artist
   type: playlist
-
-# 一言相关的配置
+nav:
+  doc: Articles
+  gitee: Gitee
+  gitee_addr: https://gitee.com/BluesYoung-web
+  github: Github
+  github_addr: https://github.com/BluesYoung-web
+  love: About
+  mail: Mail to me
+  mail_addr: mailto:bluesyoung_web&#64;163.com
+  title: BluesYoung's Blog
+not-found: Not found
 one_say:
-  refresh: https://v1.hitokoto.cn/
   detail: https://hitokoto.cn?uuid=
+  refresh: https://v1.hitokoto.cn/

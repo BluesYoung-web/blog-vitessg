@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-24 10:57:16
+ * @LastEditTime: 2022-01-26 11:22:07
  * @Description: 
 -->
 <route lang="yaml">
@@ -33,7 +33,7 @@ const { homeDocs } = useDocsStore();
     @apply top-10;
   }
   .my-doc {
-    @apply top-110;
+    @apply top-90;
   }
 }
 </style>

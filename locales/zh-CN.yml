@@ -22,13 +22,9 @@ nav:
 intro:
   anthor: BluesYoung-web
   say: 沉迷代码，无法自拔
-  nums: 现有文章
-  classess: 目录分类
-  repos: 开源项目
-  # 获取开源仓库数目的接口
-  repos_api: https://gitee.com/api/v5/users/BluesYoung-web/repos?type=all&sort=full_name&page=1&per_page=100&access_token=36ca4852e583c1ed024aa1cfc1bc3c3f
   # 文章目录
   doc_toc: 文章目录
+  search: 搜索
   
 not-found: 未找到页面
 
