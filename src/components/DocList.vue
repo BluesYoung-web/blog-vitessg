@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-18 14:28:36
- * @LastEditTime: 2022-01-25 09:48:06
+ * @LastEditTime: 2022-01-26 11:32:47
  * @Description: 文章列表
 -->
 <script lang="ts" setup>
@@ -26,7 +26,7 @@ withDefaults(defineProps<Props>(), {
     >
       <NCard class="my-4 rounded" :title="item.title" hoverable @click="$router.push(item.path)">
         <template v-if="showImage" #cover>
-          <NImage :src="item.image ?? '/img/default.jpg'" fallback-src="/img/default.jpg" object-fit="fill" />
+          <NImage :src="item.image ?? '/img/default.jpg'" fallback-src="/img/default.jpg" object-fit="fill" @click.prevent="null" />
         </template>
         {{ item.description }}
         <template #action>
