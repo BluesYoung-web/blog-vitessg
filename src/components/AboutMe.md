@@ -23,6 +23,8 @@ const mail_addr = computed(() => String(t('nav.mail_addr')).replace('&#64;', '@'
 
 <div class="text-center">
   <logos-javascript class="mr-2 text-6xl" />
+  <logos-html-5 class="mr-2 text-6xl" />
+  <logos-css-3 class="mr-2 text-6xl" />
   <logos-typescript-icon class="mr-2 text-6xl" />
   <logos-nodejs-icon class="mr-2 text-6xl" />
   <logos-vue class="text-6xl" />
@@ -33,6 +35,6 @@ const mail_addr = computed(() => String(t('nav.mail_addr')).replace('&#64;', '@'
   <logos-linux-tux class="mr-2 text-6xl" />
   <logos-nginx class="mr-2 text-6xl" />
   <logos-docker-icon class="mr-2 text-6xl" />
-  <logos-python class="text-6xl" />
-  <logos-php class="mr-2 text-6xl" />
+  <logos-python class="mr-2 text-6xl" />
+  <logos-php class="text-6xl" />
 </div>
