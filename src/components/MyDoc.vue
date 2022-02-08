@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-20 14:33:40
- * @LastEditTime: 2022-01-26 11:25:42
+ * @LastEditTime: 2022-02-08 14:51:08
  * @Description: 文章目录
 -->
 <script lang="ts" setup>
@@ -32,7 +32,6 @@ const jump = (_: any, [v , ...__]: DocIndexItem[]) => {
               :data="docTree"
               block-line
               class="max-h-120 overflow-auto"
-              default-expand-all
               :on-update:selected-keys="jump"
             />
           </n-space>
