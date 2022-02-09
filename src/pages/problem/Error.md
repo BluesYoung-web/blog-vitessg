@@ -100,6 +100,15 @@ activited() {
 </html>
 ```
 
+### 调试
+
+```html
+<script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
+<script>
+new VConsole();
+</script>
+```
+
 ## SQL
 
 ### 自增ID无法从 0 开始
@@ -274,3 +283,135 @@ import moment from 'moment';
 import 'moment/dist/locale/zh-cn';
 moment.duration(120, 's').humanize(); // 两分钟
 ```
+
+### SSG
+
+**模块报错：**
+
+```js
+[vite-ssg] An internal error occurred.
+[vite-ssg] Please report an issue, if none already exists: https://github.com/antfu/vite-ssg/issues
+file:///home/young/young-project/vitesse/.vite-ssg-temp/main.mjs:24
+import { NCard } from "naive-ui";
+         ^^^^^
+SyntaxError: Named export 'NCard' not found. The requested module 'naive-ui' is a CommonJS module, which may not support all module.exports as named exports.
+CommonJS modules can always be imported via the default export, for example using:
+
+import pkg from 'naive-ui';
+const { NCard } = pkg;
+
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:124:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:181:5)
+    at async Promise.all (index 0)
+    at async ESMLoader.import (node:internal/modules/esm/loader:281:24)
+    at async importModuleDynamicallyWrapper (node:internal/vm/module:437:15)
+    at async build (/home/young/young-project/vitesse/node_modules/.pnpm/vite-ssg@0.17.6_0b7aeac23451430d7a0b62007ee02bfe/node_modules/vite-ssg/dist/node/cli.cjs:180:44)
+    at async Object.handler (/home/young/young-project/vitesse/node_modules/.pnpm/vite-ssg@0.17.6_0b7aeac23451430d7a0b62007ee02bfe/node_modules/vite-ssg/dist/node/cli.cjs:294:3)
+error Command failed with exit code 1.
+```
+
+- **原因：** 主要是因为 `naive-ui` 没有提供对应的 `.mjs` 模块，**而 `vite-ssg` 默认为 `esm` 所需的 `.mjs` 模块**
+
+- **解决方法：修改 `vite.config.ts` 的配置即可[解决](https://github.com/antfu/vite-ssg/issues/150#issuecomment-997462153)**
+
+```js
+{
+  ssgOptions: {
+    format: 'cjs'
+  }
+}
+```
+
+**使用了浏览器端特有的属性或API，导致报错：**
+
+- **解决方案一：**
+  - 使用 `<client-only>` 标签将涉及浏览器专属操作的组件包裹起来
+  - **会阻止对应的代码在编译时生成，不推荐使用**
+
+```html
+<template>
+	<client-only>
+    	<App />
+    </client-only>
+</template>
+```
+
+- **解决方案二：**
+  - 使用对应的 **属性/API** 之前先进行是否为浏览器的判断
+  - 虽然相对来说繁琐的一点，不过能更大程度上的做到接近真实使用的渲染
+  - **推荐使用**
+
+```html
+<script lang="ts" setup>
+// 只有在浏览器端才存在 window
+import { isClient } from '@vueuse/core';
+
+const { y } = useScroll(isClient ? window : null);
+</script>
+```
+
+### 引入外部 js 文件无效
+
+**必须加入 `type="module"`， 否则打包之后无法使用**
+
+```html
+<!-- 引入特效 -->
+<script type="module" src="/src/assets/js/number-rain.js"></script>
+```
+
+### Vue3 移动端兼容
+
+**表现：**
+  - 微信内置浏览器可以正常打开
+  - `vivo` 内置浏览器无法正常打开
+
+**原因：**
+  - 微信内置浏览器的内核 `Chrome/86.0.4240.99`
+  - `vivo` 浏览器内核 `Chrome/62.0.3202.84`
+  - 好巧不巧，**刚好 `Chrome62`不支持动态 import**
+  - [caniuse-import](https://www.caniuse.com/?search=import)
+
+**解决方案：修改配置文件**
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import legacy from '@vitejs/plugin-legacy';
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    // 不生成同名 polyfill 文件，打包速度翻倍
+    // 如果出现兼容问题，可以删除此配置
+    // legacy({ renderLegacyChunks: false })
+    legacy()
+  ]
+})
+```
+
+## Vue
+
+### 数据改变但是视图没有刷新
+
+强制刷新 `@change="() => $forceUpdate()"`
+
+### ref 属性导致响应丢失
+
+**使用 CompositionAPI 写法的时候 `ref属性` 与 `表单对象form` 不能相同，否则会丢失响应**
+
+```html
+<template>
+	<el-form ref="formRef" v-model="form"></el-form>
+</template>
+<script setup>
+import { ref } from 'vue';
+const formRef = ref(null);
+const form = ref(null);
+</script>
+```
+
+## yarn
+
+### 无法加载文件` C:\Users\01\AppData\Roaming\npm\yarn.ps1`
+
+**管理员身份运行 `powershell`，执行 `set-ExecutionPolicy RemoteSigned`**
