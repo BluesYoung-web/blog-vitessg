@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-16 14:49:24
- * @LastEditTime: 2022-01-20 19:08:06
+ * @LastEditTime: 2022-02-09 11:10:11
  * @Description: 一言
  */
 import { isClient } from '@vueuse/core';
@@ -72,7 +72,7 @@ export default defineComponent({
       >
         <p>{ sayObj.value?.hitokoto ?? '' }</p>
         <p>
-          <span>出自：</span>
+          <span style={{ display: sayObj.value ? 'inline' : 'none' }}>出自：</span>
           {
             `
               ${sayObj.value?.from ?? ''}
