@@ -1,7 +1,6 @@
 ---
 title: CSS 相关
 description: CSS 相关
-image: /img/css.jpg
 date: 2021-12-09 17:42:25
 ---
 
