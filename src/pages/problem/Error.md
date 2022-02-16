@@ -415,3 +415,45 @@ const form = ref(null);
 ### 无法加载文件` C:\Users\01\AppData\Roaming\npm\yarn.ps1`
 
 **管理员身份运行 `powershell`，执行 `set-ExecutionPolicy RemoteSigned`**
+
+## jest
+
+### "SyntaxError: Need to install with `app.use` function" when using vue-i18n plugin for Vue3
+
+
+<n-alert class="mt-4" title="vue-i18n 测试用例报错" type="warning">不能像在 `.vue` 文件中一样**直接使用 `useI18n()`**</n-alert>
+
+**正确使用：**
+
+```ts
+import { mount } from '@vue/test-utils';
+import { createI18n } from 'vue-i18n';
+import Footer from '../src/components/Footer.vue';
+
+describe('Footer.vue', () => {
+  it('should be interactive', async() => {
+    const i18n = createI18n({
+      legacy: false,
+      locale: 'zh-CN',
+      messages,
+    });
+    const wrapper = mount(Footer, {
+      global: {
+        // 先在此处安装插件
+        plugins: [i18n]
+      }
+    });
+    expect(wrapper.findAll('a').length).toBe(2);
+    
+    const [gitee, refer] = wrapper.findAll('a');
+    const giteeAttr = gitee.attributes();
+    const referAttr = refer.attributes();
+    expect(giteeAttr.target).toBe('_blank');
+    // 然后在 vm 上调用对应的属性
+    expect(giteeAttr.href).toBe(wrapper.vm.t('nav.gitee_addr'));
+
+    expect(referAttr.target).toBe('_blank');
+    expect(referAttr.href).toBe('https://github.com/antfu/vitesse');
+  });
+});
+```
