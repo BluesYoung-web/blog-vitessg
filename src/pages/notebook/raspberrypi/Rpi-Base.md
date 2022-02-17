@@ -84,3 +84,19 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install alacarte
 ```
+
+## 保持 mac 地址不变
+
+```bash
+sudo nano /etc/NetworkManager/conf.d/100-disable-wifi-mac-randomization.conf
+```
+
+修改内容如下：
+
+```conf
+[connection]
+wifi.mac-address-randomization=1
+
+[device]
+wifi.scan-rand-mac-address=no
+```
