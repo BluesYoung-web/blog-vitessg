@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-02-03 14:56:19
+ * @LastEditTime: 2022-02-23 19:05:12
  * @Description: 
 -->
 <script lang="ts" setup>
@@ -31,7 +31,7 @@ onMounted(() => {
       // @ts-ignore 菜单锚点
       Array.from(event.path).some((ele) => ele === menu)
       ) {
-      const url = new URL(link?.href ?? '');
+      const url = new URL(`${link?.href ?? location.href}`);
       event.preventDefault();
       const { pathname, hash } = url;
       if (hash && (!pathname || pathname === location.pathname)) {
