@@ -187,6 +187,11 @@ git pull origin origin-name:local-name
 # 常规推送，推送对应的本地分支到远程
 git push origin feat-branch-name
 git push origin local-name:origin-name
+
+# 设置全局代理(clash)
+git config --global http.proxy http://127.0.0.1:7890
+# 取消全局代理(不使用 clash 时)
+git config --global --unset http.proxy
 ```
 
 ## `.gitignore` 忽略文件
