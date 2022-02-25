@@ -94,6 +94,10 @@ defineStore(
     hydrate(state, initialState): void
   }
 );
+// 热更
+import { acceptHMRUpdate } from 'pinia';
+const useXStore = defineStore();
+import.meta.hot && import.meta.hot.accept(acceptHMRUpdate(useXStore, import.meta.hot));
 ```
 
 ## 使用 `Store`
