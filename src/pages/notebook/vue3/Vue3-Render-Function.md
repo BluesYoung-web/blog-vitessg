@@ -258,15 +258,26 @@ export default defineComponent({
 // 使用
 // 默认插槽
 <MyComponent>{() => 'hello'}</MyComponent>
-// 具名插槽
+// 具名插槽 1
 <MyComponent>
-{
-  {
+{{
+  default: () => 'default slot',
+  footer: () => <div>sub footer</div>,
+}}
+</MyComponent>
+// 具名插槽 2
+<MyComponent
+  v-slots={{
     default: () => 'default slot',
     footer: () => <div>sub footer</div>,
-  }
-}
-</MyComponent>
+  }}
+></MyComponent>
+// 具名插槽 3
+<MyComponent
+  v-slots={{
+    footer: () => <div>sub footer</div>,
+  }}
+>default slot</MyComponent>
 ```
 
 ## 自定义渲染
