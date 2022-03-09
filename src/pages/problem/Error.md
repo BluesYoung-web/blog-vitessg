@@ -410,6 +410,19 @@ const form = ref(null);
 </script>
 ```
 
+### 渲染函数 h
+
+<n-alert class="my-4" type="warning">**Non-function value encountered for default slot.<br/> Prefer function slots for better performance**</n-alert>
+
+```ts
+// 直接将内容作为默认插槽的内容，会产生警告
+h(ComponentA, { prop: value }, '我是内容');
+// 以函数的方式放入，拥有更好的性能，警告消除
+h(ComponentA, { prop: value }, {
+  default: () => '我是内容'
+});
+```
+
 ## yarn
 
 ### 无法加载文件` C:\Users\01\AppData\Roaming\npm\yarn.ps1`
