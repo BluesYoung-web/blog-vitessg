@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-17 16:46:09
- * @LastEditTime: 2022-01-18 11:22:42
+ * @LastEditTime: 2022-03-09 16:41:08
  * @Description: 纵向展示
 -->
 <script lang="ts" setup>
@@ -26,7 +26,7 @@ defineProps<Props>();
         <div class="text-2xl">{{ title }}</div>
       </NTimelineItem>
       <NTimelineItem v-for="(item, index) in data" :key="index" type="info">
-        <div v-if="typeof item === 'string'">{{ item }}</div>
+        <div v-if="typeof item === 'string'" v-html="item" />
         <div v-else>{{ item }}</div>
       </NTimelineItem>
     </NTimeline>
