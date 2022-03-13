@@ -240,6 +240,55 @@ declare module 'vue' {
 <MyComponent hello="world" />
 ```
 
+
+## `render`
+
+<n-alert class="my-4" type="info">**ElMessage 的实现原理**</n-alert>
+
+```html
+<script setup>
+import { ref, render, h, onMounted } from 'vue';
+const vm = h('div', {
+  style: {
+    backgroundColor: 'red'
+  }
+}, '啦啦啦');
+
+const container = document.createElement('div');
+render(vm, container);
+
+const start = () => {
+  if (document.body.contains(container)) {
+    container.style.display = 'block';
+  } else {
+  	document.body.appendChild(container);
+  }
+  setTimeout(() => container.style.display = 'none', 3000);
+};
+
+const msg = ref('Hello World!');
+</script>
+
+<template>
+  <h1 @click="start">{{ msg }}</h1>
+</template>
+```
+
+```ts
+import { render } from 'vue';
+
+export declare const render: RootRenderFunction<Element | ShadowRoot>;
+export declare type RootRenderFunction<HostElement = RendererElement> = (
+  vnode: VNode | null,
+  container: HostElement,
+  isSVG?: boolean
+) => void;
+/**
+ * 接收一个 VNode 节点和一个真实的宿主元素(DOM 或 shadowDOM)
+ * 将 VNode 转换为真实 DOM 之后渲染到宿主元素内部
+ */
+```
+
 ## 不兼容 `Vue2`
 
 ### 全局 `API`
