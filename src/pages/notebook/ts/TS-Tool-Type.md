@@ -2,7 +2,7 @@
 title: TypeScript 操作符(工具类)
 description: TypeScript 操作符(工具类)
 image: /img/ts.jpeg
-date: 2021-09-22 10:16:28
+date: 2022-03-15 17:00:28
 ---
 
 [[toc]]
@@ -418,3 +418,30 @@ type B = ConstructorParameters<FunctionConstructor>;
 type C = ConstructorParameters<RegExpConstructor>;
 ```
 
+## `DeepKeyOf`
+
+**接受一个对象类型，返回其键名(多层嵌套)所组成的联合类型**
+
+```ts
+type DeepKeyOf<T> =
+// 确保 T 为对象类型
+T extends Record<string, any>
+  ? {
+      [k in keyof T]: k extends string // 确保键名为 string 类型
+                        ? k | `${k}.${DeepKeyOf<T[k]>}` // k | k.a | k.a.b | k.a.c | ...
+                        : never
+    }[keyof T]; // 取得每一项键名对应的键值
+  : never;
+
+interface Stu {
+  name: string;
+  age: number;
+  nest: {
+    a: {
+      b: number;
+    }
+  }
+}
+type des = DeepKeyOf<Stu>;
+// "name" | "age" | "nest" | "nest.a" | "nest.a.b"
+```
