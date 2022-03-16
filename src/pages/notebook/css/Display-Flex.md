@@ -9,9 +9,9 @@ date: 2021-03-11 09:46:50
 
 ## 定义
 
-弹性布局
+**弹性布局**
 
-使用 `Flex` 布局之后，里面的 **float、clear、vertical-align 属性将失效**
+<n-alert type="warning">使用 `Flex` 布局之后，里面的 **float、clear、vertical-align 属性将失效**</n-alert>
 
 ```html
 <!DOCTYPE html>
