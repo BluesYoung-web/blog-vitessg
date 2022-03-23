@@ -34,7 +34,10 @@ declare module 'vue' {
     MyDoc: typeof import('./components/MyDoc.vue')['default']
     NAlert: typeof import('naive-ui')['NAlert']
     NCard: typeof import('naive-ui')['NCard']
+    NCollapse: typeof import('naive-ui')['NCollapse']
+    NCollapseItem: typeof import('naive-ui')['NCollapseItem']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NIcon: typeof import('naive-ui')['NIcon']
     NImage: typeof import('naive-ui')['NImage']
     NInput: typeof import('naive-ui')['NInput']
     NotoHeartSuit: typeof import('~icons/noto/heart-suit')['default']
@@ -51,6 +54,7 @@ declare module 'vue' {
     ScrollTop: typeof import('./components/ScrollTop.tsx')['default']
     SimpleIconsGitee: typeof import('~icons/simple-icons/gitee')['default']
     Step: typeof import('./components/Step.vue')['default']
+    VscodeIconsFileTypeTestts: typeof import('~icons/vscode-icons/file-type-testts')['default']
   }
 }
 
