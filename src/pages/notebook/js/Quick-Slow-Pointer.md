@@ -455,3 +455,70 @@ function minWindow(s: string, t: string): string {
   }
 }
 ```
+
+### 无重复最长子串
+
+<n-alert type="info">**快慢指针 + 滑动窗口**</n-alert>
+
+[<cib-leetcode /> 力扣原题-3](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
+
+<n-collapse>
+  <n-collapse-item name="1">
+    <template #header>
+      <vscode-icons-file-type-testts />
+      <span class="ml-1">测试代码</span>
+    </template>
+
+```ts
+describe('无重复最长子串', () => {
+
+  it('官方示例', () => {
+    expect(lengthOfLongestSubstring('abcabcbb')).toBe(3);
+    expect(lengthOfLongestSubstring('bbbbb')).toBe(1);
+    expect(lengthOfLongestSubstring('pwwkew')).toBe(3);
+  });
+
+  it('整个字符串全部无重复', () => {
+    expect(lengthOfLongestSubstring('au')).toBe(2);
+  });
+
+  it('结尾', () => {
+    expect(lengthOfLongestSubstring('aab')).toBe(2);
+  });
+
+  it('开头', () => {
+    expect(lengthOfLongestSubstring('jbpnbwwd')).toBe(4);
+  })
+});
+```
+  </n-collapse-item>
+</n-collapse>
+
+**具体实现：**
+
+```ts
+function lengthOfLongestSubstring(s: string): number {
+  if (s.length <= 1) {
+    return s.length;
+  }
+  let slow = 0;
+  let fast = 0;
+  let max = 0;
+
+  const windowMap = new Map<string, number>();
+
+  while(fast < s.length) {
+    if (windowMap.has(s[fast])) {
+      // 从第一个重复的字符之后，重新开始
+      while (slow <= windowMap.get(s[fast])) {
+        windowMap.delete(s[slow]);
+        slow++;
+      }
+    }
+    windowMap.set(s[fast], fast);
+    max = Math.max(fast - slow + 1, max);
+    fast++;
+  }
+  return max;
+};
+```
