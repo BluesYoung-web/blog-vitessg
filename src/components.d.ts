@@ -24,8 +24,6 @@ declare module 'vue' {
     LogosLinuxTux: typeof import('~icons/logos/linux-tux')['default']
     LogosNginx: typeof import('~icons/logos/nginx')['default']
     LogosNodejsIcon: typeof import('~icons/logos/nodejs-icon')['default']
-    LogosPhp: typeof import('~icons/logos/php')['default']
-    LogosPython: typeof import('~icons/logos/python')['default']
     LogosRaspberryPi: typeof import('~icons/logos/raspberry-pi')['default']
     LogosTypescriptIcon: typeof import('~icons/logos/typescript-icon')['default']
     LogosVue: typeof import('~icons/logos/vue')['default']
