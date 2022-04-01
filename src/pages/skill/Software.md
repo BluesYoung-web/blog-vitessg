@@ -74,7 +74,7 @@ nano ~/.config/ranger/rc.conf
 
 ### Shell Clash
 
-[Github](https://github.com/juewuy/ShellClash/blob/master/README_CN.md)
+[GitHub](https://github.com/juewuy/ShellClash/blob/master/README_CN.md)
 
 ```bash
 # jsdelivrCDN源
