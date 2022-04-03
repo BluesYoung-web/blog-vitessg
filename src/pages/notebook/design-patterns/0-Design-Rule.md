@@ -50,7 +50,7 @@ image: /img/design-mode.jpeg
 - 发布订阅(观察者)模式
 - 模板方法模式
 - [策略模式](./2-Strategy-Mode)
-- 代理模式
+- [代理模式](./3-Proxy-Mode)
 - 职责链模式
 
 ### 里氏替换
