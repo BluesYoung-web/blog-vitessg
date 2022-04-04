@@ -53,7 +53,7 @@ image: /img/design-mode.jpeg
 - [模板方法模式](./8-Template-Mode)
 - [策略模式](./2-Strategy-Mode)
 - [代理模式](./3-Proxy-Mode)
-- 职责链模式
+- [责任链模式](./10-CoR-Mode)
 
 ### 里氏替换
 
