@@ -20,6 +20,7 @@ image: /img/design-mode.jpeg
 - [单例模式](./1-Singleton)
 - [命令模式](./6-Command-Mode)
 - [装饰器模式](./12-Decorator-Mode)
+- [桥接模式](./19-Bridge-Mode)
 
 **优点：**
 - 降低单个类或对象的复杂度
