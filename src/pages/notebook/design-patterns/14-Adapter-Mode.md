@@ -72,17 +72,17 @@ class Adapter extends Target {
 /**
  * 客户端
  */
-function clientCode6(target: Target) {
+function clientCode(target: Target) {
 	console.log(target.request());
 }
 console.log('使用原有接口：');
 const target = new Target();
-clientCode6(target);
+clientCode(target);
 console.log('\n');
 const adaptee = new Adaptee();
 console.log(`适配器处理之前的接口：${adaptee.specificRequest()}`);
 console.log('\n');
 console.log('加入适配器：');
 const adapter = new Adapter(adaptee);
-clientCode6(adapter);
+clientCode(adapter);
 ```
