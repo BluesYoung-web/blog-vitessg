@@ -37,7 +37,7 @@ image: /img/design-mode.jpeg
 
 **相关的设计模式：**
 - [中介者模式](./11-Mediator-Mode)
-- 外观模式
+- [外观模式](./20-Appearance-Mode)
 
 ### 开闭
 
