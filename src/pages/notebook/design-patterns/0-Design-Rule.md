@@ -17,6 +17,7 @@ image: /img/design-mode.jpeg
 - 代理模式
 - [迭代器模式](./4-Iterator-Mode)
 - [单例模式](./1-Singleton)
+- [命令模式](./6-Command-Mode)
 - 装饰器模式
 
 **优点：**
