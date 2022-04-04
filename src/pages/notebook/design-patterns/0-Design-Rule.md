@@ -47,7 +47,7 @@ image: /img/design-mode.jpeg
 使用**接口**和**抽象类**
 
 **相关的设计模式：**
-- 发布订阅(观察者)模式
+- [发布订阅(观察者)模式](./5-Observer-Mode)
 - 模板方法模式
 - [策略模式](./2-Strategy-Mode)
 - [代理模式](./3-Proxy-Mode)
