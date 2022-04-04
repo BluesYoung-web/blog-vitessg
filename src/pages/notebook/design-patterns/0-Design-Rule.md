@@ -49,6 +49,7 @@ image: /img/design-mode.jpeg
 
 **相关的设计模式：**
 - [发布订阅(观察者)模式](./5-Observer-Mode)
+- [组合模式](./7-Composite-Mode)
 - 模板方法模式
 - [策略模式](./2-Strategy-Mode)
 - [代理模式](./3-Proxy-Mode)
