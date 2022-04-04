@@ -16,6 +16,7 @@ image: /img/design-mode.jpeg
 **相关的设计模式：**
 - [代理模式](./3-Proxy-Mode)
 - [迭代器模式](./4-Iterator-Mode)
+- [生成器模式](./17-Generator-Mode)
 - [单例模式](./1-Singleton)
 - [命令模式](./6-Command-Mode)
 - [装饰器模式](./12-Decorator-Mode)
