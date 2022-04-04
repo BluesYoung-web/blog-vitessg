@@ -61,6 +61,7 @@ image: /img/design-mode.jpeg
 - [工厂模式](./15-Factory-Mode)
 - [抽象工厂模式](./16-Abstract-Factory-Mode)
 - [原型模式](./18-Prototype-Mode)
+- [备忘录模式](./21-Memo-Mode)
 
 ### 里氏替换
 
