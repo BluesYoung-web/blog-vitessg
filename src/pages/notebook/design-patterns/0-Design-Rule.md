@@ -18,7 +18,7 @@ image: /img/design-mode.jpeg
 - [迭代器模式](./4-Iterator-Mode)
 - [单例模式](./1-Singleton)
 - [命令模式](./6-Command-Mode)
-- 装饰器模式
+- [装饰器模式](./12-Decorator-Mode)
 
 **优点：**
 - 降低单个类或对象的复杂度
