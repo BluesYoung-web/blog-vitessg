@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-16 14:16:48
- * @LastEditTime: 2022-01-21 11:09:24
+ * @LastEditTime: 2022-04-04 18:17:58
  * @Description: 
 -->
 <script lang="ts" setup>
@@ -22,7 +22,6 @@ const scorll = () => {
         <p class="text-2xl font-bold mb-1 lg:text-4xl">{{ t('nav.title') }}</p>
         <OneSay class="text-xl lg:text-2xl text-center" />
       </div>
-      <Music />
       <div class="down">
         <ri-arrow-down-s-line class="icon" @click="() => scorll()" />
       </div>

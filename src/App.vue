@@ -1,7 +1,7 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-18 11:48:16
+ * @LastEditTime: 2022-04-04 18:17:56
  * @Description: 
 -->
 <script setup lang="ts">
@@ -12,5 +12,6 @@ import { darkTheme } from 'naive-ui';
 <template>
   <NConfigProvider :theme="isDark ? darkTheme : undefined">
     <router-view />
+    <Music />
   </NConfigProvider>
 </template>
