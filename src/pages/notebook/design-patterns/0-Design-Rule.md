@@ -54,6 +54,7 @@ image: /img/design-mode.jpeg
 - [策略模式](./2-Strategy-Mode)
 - [代理模式](./3-Proxy-Mode)
 - [责任链模式](./10-CoR-Mode)
+- [状态模式](./13-State-Mode)
 
 ### 里氏替换
 
