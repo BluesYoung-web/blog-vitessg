@@ -14,7 +14,7 @@ image: /img/design-mode.jpeg
 **一个对象(方法)只做一件事**
 
 **相关的设计模式：**
-- 代理模式
+- [代理模式](./3-Proxy-Mode)
 - [迭代器模式](./4-Iterator-Mode)
 - [单例模式](./1-Singleton)
 - [命令模式](./6-Command-Mode)
@@ -57,6 +57,7 @@ image: /img/design-mode.jpeg
 - [状态模式](./13-State-Mode)
 - [适配器模式](./14-Adapter-Mode)
 - [工厂模式](./15-Factory-Mode)
+- [抽象工厂模式](./16-Abstract-Factory-Mode)
 
 ### 里氏替换
 
