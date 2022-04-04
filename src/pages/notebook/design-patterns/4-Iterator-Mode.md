@@ -52,7 +52,7 @@ image: /img/design-mode.jpeg
 
 ```ts
 /**
- * 迭代器
+ * 迭代器接口
  */
 interface Iterator<T> {
   /**

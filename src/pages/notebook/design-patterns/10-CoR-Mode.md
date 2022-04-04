@@ -37,7 +37,7 @@ image: /img/design-mode.jpeg
 
 ```ts
 /**
- * 基类
+ * 基类接口
  */
 interface Handler {
   setNext(handler: Handler): Handler;
