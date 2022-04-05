@@ -75,7 +75,7 @@ Graduated from Wuhan Institute of Technology in 2020
 - As a front-end interviewer to assess the interviewee
 - As a member of the Technical Research Institute, responsible for the construction of the basic framework and the packaging of common components (2022.03.21 to present)
 
-**成果：**
+**Achievements：**
 - Based on [vue-element-admin](https://panjiachen.gitee.io/vue-element-admin-site/zh/) as a prototype, I built an open source project [admin-vue3-element3-vite2](https: //gitee.com/BluesYoung-web/admin-vue3-element3-vite2) and drive its use in teams
   - Abstract multiple reusable blocks of code from everyday development in the form of Composition API
   - Based on ElementPlus, I encapsulated a number of commonly used components, which greatly improved the development efficiency.
