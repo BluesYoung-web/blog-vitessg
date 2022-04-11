@@ -2,7 +2,7 @@
 // We suggest you to commit this file into source control
 // Read more: https://github.com/vuejs/vue-next/pull/3399
 
-declare module 'vue' {
+declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AboutMe: typeof import('./components/AboutMe.md')['default']
     AboutMeEN: typeof import('./components/AboutMeEN.md')['default']
@@ -49,6 +49,8 @@ declare module 'vue' {
     OneSay: typeof import('./components/OneSay.tsx')['default']
     PlumBg: typeof import('./components/PlumBg.vue')['default']
     RiArrowDownSLine: typeof import('~icons/ri/arrow-down-s-line')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     ScrollTop: typeof import('./components/ScrollTop.tsx')['default']
     SimpleIconsGitee: typeof import('~icons/simple-icons/gitee')['default']
     Step: typeof import('./components/Step.vue')['default']
