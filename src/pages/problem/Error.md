@@ -240,7 +240,25 @@ declare module '*.vue' {
 
 ### `.ts` 文件引入报错
 
-**使用相对路径引入**
+```ts
+// vite.config.ts 配置别名
+import { resolve } from 'path';
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@/': `${path.resolve(__dirname, 'src')}/`,
+    },
+  }
+});
+// tsconfig.json 配置
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
 
 ```ts
 // 关闭报错
