@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
+import legacy from '@vitejs/plugin-legacy'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import Icons from 'unplugin-icons/vite'
@@ -176,6 +177,8 @@ export default defineConfig({
 
     PkgConfig(),
     OptimizationPersist(),
+    // 设置为 false 不生成同名 polyfill 文件，打包速度翻倍；移动端必须开启，保证更好的浏览器兼容
+    legacy({ renderLegacyChunks: true })
   ],
 
   server: {
