@@ -14,6 +14,43 @@ date: 2020-12-23 14:22:18
 <component :is="{ render: () => h() }" />
 ```
 
+## 简易图片懒加载
+
+### 编写自定义指令
+
+```ts
+import type { App, DirectiveBinding } from 'vue';
+
+const lazyLoad = (
+	el: HTMLElement,
+	binding: DirectiveBinding<string>
+) => {
+  useIntersectionObserver(el, ([{ isIntersecting }]) => {
+    // img 元素首次插入可视区域
+    if (isIntersecting && !el.getAttribute('src')) {
+      el.setAttribute('src', binding.value)
+    }
+  });
+}
+
+export default {
+  install: (app: App<Element>) => {
+    app.directive('lazyload', lazyLoad);
+  }
+};
+```
+
+### 使用
+
+```ts
+import lazyload from './plugins/directives/lazyload';
+app.use(lazyload);
+```
+
+```html
+<img v-lazyload="'需要懒加载的图片地址'" />
+```
+
 ## HTML 部分的占位符
 
 `&#32;` ==> 普通的英文半角空格
