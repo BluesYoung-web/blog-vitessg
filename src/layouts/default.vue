@@ -1,13 +1,12 @@
 <!--
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-02-23 19:05:12
+ * @LastEditTime: 2022-04-17 14:55:01
  * @Description: 
 -->
 <script lang="ts" setup>
 import { isClient } from '@vueuse/core';
 import PlumBg from '~/components/PlumBg.vue';
-import type { DocItem } from '~/types';
 
 const route = useRoute();
 const router = useRouter();
@@ -60,7 +59,7 @@ onMounted(() => {
     <Header class="dark:text-gray-100" />
     <div class="container">
       <article ref="content" class="artical">
-        <h1 class="text-3xl text-center mb-5">{{ (route.meta.frontmatter as DocItem)?.title }}</h1>
+        <h1 class="text-3xl text-center mb-5">{{ route.meta.frontmatter?.title }}</h1>
         <router-view />
       </article>
     </div>
