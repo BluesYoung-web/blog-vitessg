@@ -520,3 +520,27 @@ describe('Footer.vue', () => {
   });
 });
 ```
+
+## 浏览器插件
+
+### 在 contentScript 中对 window 对象做出的修改对于页面无效
+
+<n-alert type="info">**二者的 window 是隔离的，但是 DOM 是共享的，可以通过插入 script 标签来实现代码注入**</n-alert>
+
+```ts
+const code = `
+localStorage.setItem('young-plugin', '[12138, 9527]')
+console.log("🚀 ~ file: App.vue ~ storageDemo", ${localStorage.length})
+`;
+const src = window.URL.createObjectURL(
+  new Blob([code], { type: 'text/javascript' })
+);
+const script = document.createElement('script');
+script.src = src;
+document.body.appendChild(script);
+
+const getData = () => {
+  const res = localStorage.getItem('young-plugin');
+  console.log("🚀 ~ file: App.vue ~ getData ~ res", res)
+}
+```
