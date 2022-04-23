@@ -358,18 +358,18 @@ function createHelper(arr: number[]) {
 
 describe('官方示例：', () => {
   it('1', () => {
-    const p = createHelper([1, 2, 3, 4, 5])
+    const p = createHelper([1, 2, 3, 4, 5]);
     const res = createHelper([3, 4, 5]);
     expect(middleNode(p)).toEqual(res);
   });
 
   it('2', () => {
-    const p = createHelper([1])
+    const p = createHelper([1]);
     expect(middleNode(p)).toEqual(p);
   });
 
   it('3', () => {
-    const p = createHelper([1, 2, 3, 4, 5, 6])
+    const p = createHelper([1, 2, 3, 4, 5, 6]);
     const res = createHelper([4, 5, 6]);
     expect(middleNode(p)).toEqual(res);
   });
