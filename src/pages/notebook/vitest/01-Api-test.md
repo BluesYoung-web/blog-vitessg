@@ -49,6 +49,30 @@ it.skip('should work as expected', () => {
 });
 ```
 
+### `it.skipIf(cond)`
+
+**在满足特定条件的情况下跳过该测试**
+
+```ts
+const isDev = process.env.NODE_ENV === 'development';
+
+it.skipIf(isDev)('prod only test', () => {
+  // this test only runs in production
+});
+```
+
+### `it.runIf(cond)`
+
+**在满足特定条件的情况下执行该测试**
+
+```ts
+const isDev = process.env.NODE_ENV === 'development';
+
+it.runIf(isDev)('dev only test', () => {
+  // this test only runs in development
+});
+```
+
 ### `it.only`
 
 **仅运行被标记的测试**
