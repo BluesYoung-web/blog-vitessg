@@ -192,14 +192,5 @@ export default defineConfig({
     script: 'async',
     formatting: 'minify',
     format: 'cjs'
-  },
-
-  // https://github.com/vitest-dev/vitest
-  test: {
-    include: ['test/**/*.test.ts'],
-    environment: 'jsdom',
-    deps: {
-      inline: ['@vue', '@vueuse', 'vue-demi'],
-    },
-  },
-})
+  }
+});
