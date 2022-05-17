@@ -67,9 +67,9 @@ pnpm test --filter playground
   // 多入口导出
   "exports": {
     ".": {
-      "require": "dist/index.cjs.js",
-      "import": "dist/index.es.js",
-      "types": "dist/index.d.ts"
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.es.js",
+      "types": "./dist/index.d.ts"
     }
   },
 
