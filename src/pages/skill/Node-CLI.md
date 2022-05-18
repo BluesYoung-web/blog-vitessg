@@ -2,8 +2,10 @@
 title: 编写并发布 node 命令行脚本
 description: 编写并发布 node 命令行脚本
 image: /img/node.jpg
-date: 2021-03-08 09:05:29
+date: 2022-05-18 18:05:29
 ---
+
+[[toc]]
 
 ## 脚本的编写
 
@@ -165,3 +167,29 @@ if (shell.exec('git commit -am "Auto-commit"').code !== 0){
 3. 登录账号(密码不回显) `npm login`
 4. 发布 `npm publish`(淘宝源每 10 分钟自动同步，不能及时同步的话去 https://npm.taobao.org/ 手动同步)
 5. 切换为淘宝源 `npm config set registry https://registry.npm.taobao.org`
+
+## 关于 `@name/sub-name` 包的发布
+
+<n-alert type="warning">**踩坑**</n-alert>
+
+### 403
+
+**未登录或者包名被抢注**
+
+```bash
+# 查看当前登录的用户
+npm whoami
+```
+
+### 402
+
+**@开头的包默认发布为私有包，需要氪金**
+
+**不氪金的话必须与账户同名，然后显示发布为公共包**
+
+```bash
+# 显示指定发布为公共包
+npm publish --access public
+# 初始化，自动加前缀
+npm init --scope=@username
+```
