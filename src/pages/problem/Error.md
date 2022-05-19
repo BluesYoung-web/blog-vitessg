@@ -62,7 +62,7 @@ activited() {
       - 'page up 33'
       - 'page down 34'
 
-## 移动端
+## 移动端/CSS
 
 ### 使用 vh 布局，软键盘弹出导致的样式错乱
 
@@ -107,6 +107,29 @@ activited() {
 <script>
 new VConsole();
 </script>
+```
+
+### 钉钉内置浏览器图像变形
+
+**给 img 标签外层包裹 div 标签**
+
+### globalThis is not defined
+
+`node12+, chrome71+` 才支持的标准，之前的版本不存在
+
+```html
+<!-- hack -->
+<script>
+this.globalThis || (this.globalThis = this);
+</script>
+```
+
+### 360 极速浏览器图片设置为百分比高度，首次加载变形
+
+```js
+img.onload = function(e) {
+  e.style.height = e.natureHeight + 'px';
+}
 ```
 
 ## SQL
