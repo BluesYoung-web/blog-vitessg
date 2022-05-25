@@ -567,3 +567,27 @@ const getData = () => {
   console.log("🚀 ~ file: App.vue ~ getData ~ res", res)
 }
 ```
+
+## 新兴 API
+
+### `window.postMessage` 无法正常工作
+
+<n-alert type="warning">**直接通过 window.open 返回对象调用 postMessage 可能会无法正常工作，建议子应用先给主应用发送消息，然后主应用通过消息事件内的源对象与子应用通信**</n-alert>
+
+
+<n-alert type="warning">**postMessage 的第二个参数一定要填！！！，不知道填什么可以先填 `*`**</n-alert>
+
+```ts
+// 主窗口
+window.open('子窗口的地址');
+window.addEventListener('message', (e) => {
+  (e.source as Window)?.postMessage(token, e.origin);
+});
+
+// 子窗口(被打开的窗口)
+window.addEventListener('message', (e) => {
+  console.log(e.data);
+});
+// 如果知道主窗口的地址，可以替换 * ，否则最好为 *
+window.opener?.postMessage('消息传递的数据，可以是任意值', '*');
+```
