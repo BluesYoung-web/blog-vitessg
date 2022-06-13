@@ -1,7 +1,7 @@
 /*
  * @Author: zhangyang
  * @Date: 2022-01-10 16:16:14
- * @LastEditTime: 2022-01-24 17:30:23
+ * @LastEditTime: 2022-06-13 10:01:13
  * @Description: 
  */
 import { acceptHMRUpdate, defineStore } from 'pinia';
@@ -59,10 +59,10 @@ export const useDocsStore = defineStore('docs', () => {
 
   for (const [key, value] of Object.entries(docs)) {
     const doc = {
-      ...value,
+      ...value.frontmatter,
       path: key.slice(8, -3),
       // 修复时间 bug
-      date: value.date.slice(0, -1),
+      date: value.frontmatter.date.slice(0, -1),
     } as DocItem
     // 文章收集
     allDocs.push(doc);
